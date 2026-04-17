@@ -12,10 +12,10 @@ import { Server } from "socket.io";
 const app = express();
 dotenv.config();
 
-// ✅ create HTTP server
+// create HTTP server
 const server = http.createServer(app);
 
-// ✅ init socket.io
+//  init socket.io
 const io = new Server(server, {
   cors: {
     origin: ["http://localhost:5500", "http://127.0.0.1:5500"],
@@ -23,10 +23,10 @@ const io = new Server(server, {
   },
 });
 
-// ✅ store online users
+//  store online users
 let onlineUsers = {};
 
-// ✅ socket connection
+// socket connection
 io.on("connection", (socket) => {
   // console.log("User connected:", socket.id);
   logger.info(`Socket connected: ${socket.id}`);
@@ -75,5 +75,5 @@ mongoose
     console.log(error);
   });
 
-// ✅ export for controller use
+// export for controller use
 export { io, onlineUsers };
