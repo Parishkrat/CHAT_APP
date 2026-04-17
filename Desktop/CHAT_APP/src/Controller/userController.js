@@ -152,7 +152,7 @@ export const login = async (req, res) => {
     // Set cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // ✅ works on http://localhost
+      secure: false, // works on http://localhost
       sameSite: "Lax",
       maxAge: 24 * 60 * 60 * 1000,
     });
@@ -176,7 +176,7 @@ export const login = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({
-      _id: { $ne: new mongoose.Types.ObjectId(req.userID) }, // ✅ cast to ObjectId
+      _id: { $ne: new mongoose.Types.ObjectId(req.userID) }, //  cast to ObjectId
     }).select("-password -verificationToken -verificationTokenExpires");
     return res.status(200).json({ success: true, users });
   } catch (error) {
