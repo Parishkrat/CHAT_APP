@@ -10,11 +10,11 @@ const logger = winston.createLogger({
   ),
 
   transports: [
-    // 📁 Save logs in files
+    // Save logs in files
     new winston.transports.File({ filename: "logs/error.log", level: "error" }),
     new winston.transports.File({ filename: "logs/combined.log" }),
 
-    // 🖥️ Also show in console
+    //  Also show in console
     new winston.transports.Console(),
   ],
 });
